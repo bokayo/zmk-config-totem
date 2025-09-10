@@ -44,26 +44,6 @@
             key-positions = <12 11>;
             timeout-ms = <50>;
         };
-
-        mouse_jump_up {
-            bindings = <&mmv MOVE_Y(-200)>;
-            key-positions = <6 7>;
-        };
-
-        mouse_jump_down {
-            bindings = <&mmv MOVE_Y(200)>;
-            key-positions = <27 28>;
-        };
-
-        mouse_jump_left {
-            bindings = <&mmv MOVE_X(-200)>;
-            key-positions = <16 17>;
-        };
-
-        mouse_jump_right {
-            bindings = <&mmv MOVE_X(200)>;
-            key-positions = <17 18>;
-        };
     };
 
     macros {
@@ -80,6 +60,44 @@
                 <&kp LSHFT>,
                 <&macro_tap>,
                 <&kp G &kp I &kp F>;
+        };
+    };
+
+    behaviors {
+        mouse_jump_up: mouse_jump_up {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOUSE_JUMP_UP";
+            bindings = <&mmv MOVE_UP>, <&mmv MOVE_Y(-200)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mouse_jump_down: mouse_jump_down {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOUSE_JUMP_DOWN";
+            bindings = <&mmv MOVE_DOWN>, <&mmv MOVE_Y(400)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        mouse_jump_left: mouse_jump_left {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOUSE_JUMP_LEFT";
+            bindings = <&mmv MOVE_LEFT>, <&mmv MOVE_X(-300)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        mouse_jump_right: mouse_jump_right {
+            compatible = "zmk,behavior-mod-morph";
+            label = "MOUSE_JUMP_RIGHT";
+            bindings = <&mmv MOVE_RIGHT>, <&mmv MOVE_X(400)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
         };
     };
 
@@ -156,19 +174,19 @@
 
         mouse_layer {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &kp C_PREV      &kp C_PLAY_PAUSE  &kp C_STOP    &kp C_NEXT       &kp C_VOLUME_UP
-        &trans  &trans  &trans  &trans  &trans    &mmv MOVE_LEFT  &mmv MOVE_DOWN    &mmv MOVE_UP  &mmv MOVE_RIGHT  &kp C_VOL_DN
-&trans  &trans  &trans  &trans  &trans  &trans    &msc SCRL_LEFT  &msc SCRL_DOWN    &msc SCRL_UP  &msc SCRL_RIGHT  &kp C_MUTE       &trans
-                        &trans  &trans  &trans    &mkp RCLK       &mkp LCLK         &mkp MCLK
+        &trans  &trans  &trans  &trans  &trans    &mmv MOVE_X(-100)  &mmv MOVE_Y(-600)  &mmv MOVE_Y(200)  &mmv MOVE_X(100)   &trans
+        &trans  &trans  &trans  &trans  &trans    &mouse_jump_left   &mouse_jump_down   &mouse_jump_up    &mouse_jump_right  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &msc SCRL_LEFT     &msc SCRL_DOWN     &msc SCRL_UP      &msc SCRL_RIGHT    &trans  &trans
+                        &trans  &trans  &trans    &mkp RCLK          &mkp LCLK          &mkp MCLK
             >;
         };
 
         bluetooth_layer {
             bindings = <
-        &trans  &trans  &trans  &trans  &trans    &trans          &bt BT_CLR    &trans        &trans        &trans
-        &trans  &trans  &trans  &trans  &trans    &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4
-&trans  &trans  &trans  &trans  &trans  &trans    &bt BT_CLR_ALL  &bt BT_NXT    &bt BT_PRV    &trans        &trans        &trans
-                        &trans  &trans  &trans    &trans          &trans        &trans
+        &trans  &trans  &trans  &trans  &trans    &bt BT_SEL 2  &bt BT_CLR      &kp C_STOP        &kp C_VOLUME_UP  &kp C_NEXT
+        &trans  &trans  &trans  &trans  &trans    &bt BT_SEL 3  &bt BT_PRV      &bt BT_NXT        &kp C_VOL_DN     &kp C_PREVIOUS
+&trans  &trans  &trans  &trans  &trans  &trans    &bt BT_SEL 4  &bt BT_CLR_ALL  &trans            &kp C_MUTE       &trans          &trans
+                        &trans  &trans  &trans    &bt BT_SEL 1  &bt BT_SEL 0    &kp C_PLAY_PAUSE
             >;
         };
     };
