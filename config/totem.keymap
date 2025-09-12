@@ -40,7 +40,7 @@
         };
 
         underscore {
-            bindings = <&kp LS(MINUS)>;
+            bindings = <&kp UNDER>;
             key-positions = <12 11>;
             timeout-ms = <50>;
         };
@@ -156,10 +156,10 @@
 
         sym_layer {
             bindings = <
-        &kp RS(LBKT)   &kp LS(N7)    &kp LS(STAR)   &kp LS(LPAR)   &kp LS(RBRC)     &trans  &trans  &trans  &trans  &trans
-        &kp LS(DQT)    &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(CARET)  &kp LS(PLUS)     &trans  &trans  &trans  &trans  &trans
-&trans  &kp LS(TILDE)  &kp LS(EXCL)  &kp LS(AT)     &kp LS(POUND)  &kp LS(PIPE)     &trans  &trans  &trans  &trans  &trans  &trans
-                                     &trans         &kp LS(RPAR)   &kp LS(UNDER)    &trans  &trans  &trans
+        &kp LEFT_BRACKET   &kp AMPS    &kp STAR     &kp LEFT_PARENTHESIS  &kp RIGHT_BRACE    &trans  &trans  &trans  &trans  &trans
+        &kp DOUBLE_QUOTES  &kp DOLLAR  &kp PERCENT  &kp CARET             &kp PLUS           &trans  &trans  &trans  &trans  &trans
+&trans  &kp TILDE          &kp EXCL    &kp AT       &kp HASH              &kp PIPE           &trans  &trans  &trans  &trans  &trans  &trans
+                                       &trans       &kp LEFT_PARENTHESIS  &kp UNDER          &trans  &trans  &trans
             >;
         };
 
